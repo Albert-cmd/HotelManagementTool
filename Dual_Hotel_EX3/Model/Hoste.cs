@@ -31,18 +31,6 @@ namespace Dual_Hotel_EX3.Model
             Poblacio = poblacio;
         }
 
-        public Hoste(string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio, ICollection<Ocupacio> ocupacios)
-        {
-            Nom = nom;
-            DNIPasaport = dNIPasaport;
-            Telefon = telefon;
-            Nacionalitat = nacionalitat;
-            Adreca = adreca;
-            Codipostal = codipostal;
-            Poblacio = poblacio;
-            Ocupacios = ocupacios;
-        }
-
         public int IDHoste { get; set; }
         public string Nom { get; set; }
         public string DNIPasaport { get; set; }
