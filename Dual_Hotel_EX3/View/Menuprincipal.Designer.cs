@@ -130,6 +130,7 @@
             this.afegirTemporadaB.TabIndex = 9;
             this.afegirTemporadaB.Text = "+";
             this.afegirTemporadaB.UseVisualStyleBackColor = true;
+            this.afegirTemporadaB.Click += new System.EventHandler(this.AfegirTemporadaB_Click);
             // 
             // temporadesB
             // 

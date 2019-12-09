@@ -64,5 +64,10 @@ namespace Dual_Hotel_EX3.View
 
 
         }
+
+        private void AfegirTemporadaB_Click(object sender, EventArgs e)
+        {
+            AfegirTemporadaController atc = new AfegirTemporadaController();
+        }
     }
 }

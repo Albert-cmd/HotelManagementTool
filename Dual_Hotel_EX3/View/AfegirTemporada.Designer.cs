@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.nomErrorLabel = new System.Windows.Forms.Label();
-            this.afegirClientB = new System.Windows.Forms.Button();
+            this.afegirTemporadaB = new System.Windows.Forms.Button();
             this.nomCompletLabel = new System.Windows.Forms.Label();
-            this.nomCompletInput = new System.Windows.Forms.TextBox();
+            this.nomTemporadaInput = new System.Windows.Forms.TextBox();
             this.afegirTemporadaLabel = new System.Windows.Forms.Label();
             this.MultiplicadorLabel = new System.Windows.Forms.Label();
             this.multiplicadorInput = new System.Windows.Forms.TextBox();
@@ -52,15 +52,15 @@
             this.nomErrorLabel.Text = "Temporada repetida";
             this.nomErrorLabel.Visible = false;
             // 
-            // afegirClientB
+            // afegirTemporadaB
             // 
-            this.afegirClientB.Enabled = false;
-            this.afegirClientB.Location = new System.Drawing.Point(165, 227);
-            this.afegirClientB.Name = "afegirClientB";
-            this.afegirClientB.Size = new System.Drawing.Size(75, 23);
-            this.afegirClientB.TabIndex = 26;
-            this.afegirClientB.Text = "Afegir";
-            this.afegirClientB.UseVisualStyleBackColor = true;
+            this.afegirTemporadaB.Enabled = false;
+            this.afegirTemporadaB.Location = new System.Drawing.Point(165, 227);
+            this.afegirTemporadaB.Name = "afegirTemporadaB";
+            this.afegirTemporadaB.Size = new System.Drawing.Size(75, 23);
+            this.afegirTemporadaB.TabIndex = 26;
+            this.afegirTemporadaB.Text = "Afegir";
+            this.afegirTemporadaB.UseVisualStyleBackColor = true;
             // 
             // nomCompletLabel
             // 
@@ -71,12 +71,12 @@
             this.nomCompletLabel.TabIndex = 25;
             this.nomCompletLabel.Text = "Nom complet:";
             // 
-            // nomCompletInput
+            // nomTemporadaInput
             // 
-            this.nomCompletInput.Location = new System.Drawing.Point(12, 61);
-            this.nomCompletInput.Name = "nomCompletInput";
-            this.nomCompletInput.Size = new System.Drawing.Size(227, 20);
-            this.nomCompletInput.TabIndex = 24;
+            this.nomTemporadaInput.Location = new System.Drawing.Point(12, 61);
+            this.nomTemporadaInput.Name = "nomTemporadaInput";
+            this.nomTemporadaInput.Size = new System.Drawing.Size(227, 20);
+            this.nomTemporadaInput.TabIndex = 24;
             // 
             // afegirTemporadaLabel
             // 
@@ -148,9 +148,9 @@
             this.Controls.Add(this.MultiplicadorLabel);
             this.Controls.Add(this.multiplicadorInput);
             this.Controls.Add(this.nomErrorLabel);
-            this.Controls.Add(this.afegirClientB);
+            this.Controls.Add(this.afegirTemporadaB);
             this.Controls.Add(this.nomCompletLabel);
-            this.Controls.Add(this.nomCompletInput);
+            this.Controls.Add(this.nomTemporadaInput);
             this.Controls.Add(this.afegirTemporadaLabel);
             this.Name = "AfegirTemporada";
             this.Text = "AfegirTemporada";
@@ -162,9 +162,9 @@
         #endregion
 
         public System.Windows.Forms.Label nomErrorLabel;
-        public System.Windows.Forms.Button afegirClientB;
+        public System.Windows.Forms.Button afegirTemporadaB;
         private System.Windows.Forms.Label nomCompletLabel;
-        public System.Windows.Forms.TextBox nomCompletInput;
+        public System.Windows.Forms.TextBox nomTemporadaInput;
         private System.Windows.Forms.Label afegirTemporadaLabel;
         private System.Windows.Forms.Label MultiplicadorLabel;
         public System.Windows.Forms.TextBox multiplicadorInput;
