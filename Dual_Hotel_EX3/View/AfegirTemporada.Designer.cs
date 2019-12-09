@@ -168,9 +168,9 @@
         private System.Windows.Forms.Label afegirTemporadaLabel;
         private System.Windows.Forms.Label MultiplicadorLabel;
         public System.Windows.Forms.TextBox multiplicadorInput;
-        private System.Windows.Forms.DateTimePicker dateTimeInici;
         private System.Windows.Forms.Label dataIniciLabel;
         private System.Windows.Forms.Label dataFinalLabel;
-        private System.Windows.Forms.DateTimePicker dateTimeFinal;
+        public System.Windows.Forms.DateTimePicker dateTimeInici;
+        public System.Windows.Forms.DateTimePicker dateTimeFinal;
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dual_Hotel_EX3.Controller
 {
-    public class AfegirTemporadaController
+    public class AfegirTemporadaController : CommonController
     {
 
         public AfegirTemporada at = new AfegirTemporada();
@@ -20,7 +20,7 @@ namespace Dual_Hotel_EX3.Controller
         public List<Temporada> temporades;
 
         public string NomTemporada { get; set; }
-        public string Multiplicador { get; set; }
+        public decimal Multiplicador { get; set; }
         public DateTime DataInici { get; set; }
         public DateTime DataFinal { get; set; }
 
@@ -31,6 +31,46 @@ namespace Dual_Hotel_EX3.Controller
             at.Show();
 
             at.nomTemporadaInput.TextChanged += nomTemporadaChanged;
+            at.multiplicadorInput.TextChanged += multiplicadorChanged;
+
+            at.dateTimeInici.ValueChanged += dateIniciChanged;
+            at.dateTimeFinal.ValueChanged += dateFinalChanged;
+
+            at.afegirTemporadaB.Click += AfegirTemporadaClick;
+        }
+
+        private void AfegirTemporadaClick(object sender, EventArgs e)
+        {
+
+            TemporadaRepository.InsertTemporada(temporada);
+            at.Close();
+
+        }
+
+        private void dateFinalChanged(object sender, EventArgs e)
+        {
+            DataFinal = at.dateTimeFinal.Value;
+            checkTemporada();
+        }
+
+        private void dateIniciChanged(object sender, EventArgs e)
+        {
+
+            DataInici = at.dateTimeInici.Value;
+            checkTemporada();
+
+        }
+
+        private void multiplicadorChanged(object sender, EventArgs e)
+        {
+
+            Multiplicador = Decimal.Parse(at.multiplicadorInput.Text);
+            if (checkIfEmptyOrNull(Multiplicador))
+            {
+                Multiplicador = 0;
+            }
+
+            checkTemporada();
         }
 
         private void nomTemporadaChanged(object sender, EventArgs e)
@@ -83,9 +123,32 @@ namespace Dual_Hotel_EX3.Controller
 
         }
 
-        public void checkTemporada() {
+        private void checkTemporada()
+        {
 
+            try
+            {
 
+                // string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio
+                temporada = new Temporada(NomTemporada, Multiplicador, DataInici, DataFinal);
+
+                Console.WriteLine(temporada.ToString());
+                bool temporadavalida = false;
+
+                if (NomTemporada != null && Multiplicador != 0)
+                {
+                    temporadavalida = true;
+                }
+
+                at.afegirTemporadaB.Enabled = temporadavalida;
+
+                Console.WriteLine(temporadavalida);
+
+            }
+            catch (Exception ex)
+            {
+                //
+            }
 
         }
     }

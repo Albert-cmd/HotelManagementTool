@@ -248,6 +248,7 @@ namespace Dual_Hotel_EX3.Controller
         private void afegirHosteClick(object sender, EventArgs e)
         {
             HosteRepository.InsertHoste(hoste);
+            ah.Close();
         }
     }
 }
