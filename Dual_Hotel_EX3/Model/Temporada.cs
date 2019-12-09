@@ -19,15 +19,7 @@ namespace Dual_Hotel_EX3.Model
         {
             this.TipusHabitacios = new HashSet<TipusHabitacio>();
         }
-
-        public Temporada(string nom, decimal multiplicador, DateTime dataInici, DateTime dataFinal)
-        {
-            Nom = nom;
-            Multiplicador = multiplicador;
-            DataInici = dataInici;
-            DataFinal = dataFinal;
-        }
-
+    
         public int IDTemporada { get; set; }
         public string Nom { get; set; }
         public decimal Multiplicador { get; set; }
