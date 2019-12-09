@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IDClient" />
+          </Key>
+          <Property Name="IDClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'hotel.dbo.Client_has_hoste' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Client_has_hoste">
+          <Property Name="IDClient" Type="int" />
+          <Property Name="IDHoste" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Habitacio">
+          <Key>
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="TeTerrassa" Type="tinyint" Nullable="false" />
+          <Property Name="EsUtilitzable" Type="tinyint" Nullable="false" />
+          <Property Name="M2" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TipusHabitacio" Type="int" Nullable="false" />
+          <Property Name="NumPlanta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hoste">
+          <Key>
+            <PropertyRef Name="IDHoste" />
+          </Key>
+          <Property Name="IDHoste" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DNIPasaport" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nacionalitat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adreca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codipostal" Type="int" Nullable="false" />
+          <Property Name="Poblacio" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocupacio">
+          <Key>
+            <PropertyRef Name="IDOcupacio" />
+          </Key>
+          <Property Name="IDOcupacio" Type="int" Nullable="false" />
+          <Property Name="IDHoste" Type="int" Nullable="false" />
+          <Property Name="NumHabitacio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pensio">
+          <Key>
+            <PropertyRef Name="IDPensio" />
+          </Key>
+          <Property Name="IDPensio" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcio" Type="text" Nullable="false" />
+          <Property Name="Preu" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Planta">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="IDReserva" />
+          </Key>
+          <Property Name="IDReserva" Type="int" Nullable="false" />
+          <Property Name="Client" Type="int" />
+          <Property Name="Serveis" Type="int" Nullable="false" />
+          <Property Name="DataInici" Type="date" Nullable="false" />
+          <Property Name="DataFinal" Type="date" Nullable="false" />
+          <Property Name="Bestreta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImportBrut" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IVA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Hoste" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'hotel.dbo.Reserva_Has_Tipus_Habitacio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Reserva_Has_Tipus_Habitacio">
+          <Key>
+            <PropertyRef Name="IDReserva" />
+            <PropertyRef Name="IDTipus" />
+            <PropertyRef Name="Quantitat" />
+          </Key>
+          <Property Name="IDReserva" Type="int" Nullable="false" />
+          <Property Name="IDTipus" Type="int" Nullable="false" />
+          <Property Name="Quantitat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servei">
+          <Key>
+            <PropertyRef Name="IDServei" />
+          </Key>
+          <Property Name="IDServei" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataHora" Type="datetime" Nullable="false" />
+          <Property Name="Preu" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Temporada">
+          <Key>
+            <PropertyRef Name="IDTemporada" />
+          </Key>
+          <Property Name="IDTemporada" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Multiplicador" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DataInici" Type="date" Nullable="false" />
+          <Property Name="DataFinal" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'hotel.dbo.Temporada_has_tipus_habitacio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Temporada_has_tipus_habitacio">
+          <Key>
+            <PropertyRef Name="IDTemporada" />
+            <PropertyRef Name="IDTipus" />
+          </Key>
+          <Property Name="IDTemporada" Type="int" Nullable="false" />
+          <Property Name="IDTipus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipusHabitacio">
+          <Key>
+            <PropertyRef Name="IDTipus" />
+          </Key>
+          <Property Name="IDTipus" Type="int" Nullable="false" />
+          <Property Name="Capacitat" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SuplementPersona" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Temporada" Type="int" Nullable="false" />
+          <Property Name="Pensio" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'hotel.dbo.Client_has_hoste' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Client_has_hoste_Client" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'hotel.dbo.Client_has_hoste' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Client_has_hoste_Hoste" />-->
+        <Association Name="FK_Habitacio_Planta">
+          <End Role="Planta" Type="Self.Planta" Multiplicity="1" />
+          <End Role="Habitacio" Type="Self.Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planta">
+              <PropertyRef Name="Num" />
+            </Principal>
+            <Dependent Role="Habitacio">
+              <PropertyRef Name="NumPlanta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Habitacio_TipusHabitacio">
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="1" />
+          <End Role="Habitacio" Type="Self.Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusHabitacio">
+              <PropertyRef Name="IDTipus" />
+            </Principal>
+            <Dependent Role="Habitacio">
+              <PropertyRef Name="TipusHabitacio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocupacio_Habitacio">
+          <End Role="Habitacio" Type="Self.Habitacio" Multiplicity="1" />
+          <End Role="Ocupacio" Type="Self.Ocupacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacio">
+              <PropertyRef Name="Numero" />
+            </Principal>
+            <Dependent Role="Ocupacio">
+              <PropertyRef Name="NumHabitacio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocupacio_Hoste">
+          <End Role="Hoste" Type="Self.Hoste" Multiplicity="1" />
+          <End Role="Ocupacio" Type="Self.Ocupacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoste">
+              <PropertyRef Name="IDHoste" />
+            </Principal>
+            <Dependent Role="Ocupacio">
+              <PropertyRef Name="IDHoste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Has_Tipus_Habitacio_Reserva">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Reserva_Has_Tipus_Habitacio" Type="Self.Reserva_Has_Tipus_Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="IDReserva" />
+            </Principal>
+            <Dependent Role="Reserva_Has_Tipus_Habitacio">
+              <PropertyRef Name="IDReserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio">
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="1" />
+          <End Role="Reserva_Has_Tipus_Habitacio" Type="Self.Reserva_Has_Tipus_Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusHabitacio">
+              <PropertyRef Name="IDTipus" />
+            </Principal>
+            <Dependent Role="Reserva_Has_Tipus_Habitacio">
+              <PropertyRef Name="IDTipus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Servei">
+          <End Role="Servei" Type="Self.Servei" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servei">
+              <PropertyRef Name="IDServei" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="Serveis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Temporada_has_tipus_habitacio_Temporada">
+          <End Role="Temporada" Type="Self.Temporada" Multiplicity="1" />
+          <End Role="Temporada_has_tipus_habitacio" Type="Self.Temporada_has_tipus_habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Temporada">
+              <PropertyRef Name="IDTemporada" />
+            </Principal>
+            <Dependent Role="Temporada_has_tipus_habitacio">
+              <PropertyRef Name="IDTemporada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Temporada_has_tipus_habitacio_TipusHabitacio">
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="1" />
+          <End Role="Temporada_has_tipus_habitacio" Type="Self.Temporada_has_tipus_habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusHabitacio">
+              <PropertyRef Name="IDTipus" />
+            </Principal>
+            <Dependent Role="Temporada_has_tipus_habitacio">
+              <PropertyRef Name="IDTipus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipusHabitacio_Pensio">
+          <End Role="Pensio" Type="Self.Pensio" Multiplicity="1" />
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pensio">
+              <PropertyRef Name="IDPensio" />
+            </Principal>
+            <Dependent Role="TipusHabitacio">
+              <PropertyRef Name="Pensio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hotelModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitacio" EntityType="Self.Habitacio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hoste" EntityType="Self.Hoste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocupacio" EntityType="Self.Ocupacio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pensio" EntityType="Self.Pensio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Planta" EntityType="Self.Planta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servei" EntityType="Self.Servei" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temporada" EntityType="Self.Temporada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipusHabitacio" EntityType="Self.TipusHabitacio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva_Has_Tipus_Habitacio" EntityType="Self.Reserva_Has_Tipus_Habitacio" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Reserva_Has_Tipus_Habitacio].[IDReserva] AS [IDReserva], 
+    [Reserva_Has_Tipus_Habitacio].[IDTipus] AS [IDTipus], 
+    [Reserva_Has_Tipus_Habitacio].[Quantitat] AS [Quantitat]
+    FROM [dbo].[Reserva_Has_Tipus_Habitacio] AS [Reserva_Has_Tipus_Habitacio]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Temporada_has_tipus_habitacio" EntityType="Self.Temporada_has_tipus_habitacio" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Temporada_has_tipus_habitacio].[IDTemporada] AS [IDTemporada], 
+    [Temporada_has_tipus_habitacio].[IDTipus] AS [IDTipus]
+    FROM [dbo].[Temporada_has_tipus_habitacio] AS [Temporada_has_tipus_habitacio]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Habitacio_Planta" Association="Self.FK_Habitacio_Planta">
+            <End Role="Planta" EntitySet="Planta" />
+            <End Role="Habitacio" EntitySet="Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Habitacio_TipusHabitacio" Association="Self.FK_Habitacio_TipusHabitacio">
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacio" />
+            <End Role="Habitacio" EntitySet="Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocupacio_Habitacio" Association="Self.FK_Ocupacio_Habitacio">
+            <End Role="Habitacio" EntitySet="Habitacio" />
+            <End Role="Ocupacio" EntitySet="Ocupacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocupacio_Hoste" Association="Self.FK_Ocupacio_Hoste">
+            <End Role="Hoste" EntitySet="Hoste" />
+            <End Role="Ocupacio" EntitySet="Ocupacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Client" Association="Self.FK_Reserva_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Has_Tipus_Habitacio_Reserva" Association="Self.FK_Reserva_Has_Tipus_Habitacio_Reserva">
+            <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio" Association="Self.FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio">
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacio" />
+            <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Servei" Association="Self.FK_Reserva_Servei">
+            <End Role="Servei" EntitySet="Servei" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Temporada_has_tipus_habitacio_Temporada" Association="Self.FK_Temporada_has_tipus_habitacio_Temporada">
+            <End Role="Temporada" EntitySet="Temporada" />
+            <End Role="Temporada_has_tipus_habitacio" EntitySet="Temporada_has_tipus_habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Temporada_has_tipus_habitacio_TipusHabitacio" Association="Self.FK_Temporada_has_tipus_habitacio_TipusHabitacio">
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacio" />
+            <End Role="Temporada_has_tipus_habitacio" EntitySet="Temporada_has_tipus_habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipusHabitacio_Pensio" Association="Self.FK_TipusHabitacio_Pensio">
+            <End Role="Pensio" EntitySet="Pensio" />
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IDClient" />
+          </Key>
+          <Property Name="IDClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reserva_Client" FromRole="Client" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Habitacio">
+          <Key>
+            <PropertyRef Name="Numero" />
+          </Key>
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="TeTerrassa" Type="Byte" Nullable="false" />
+          <Property Name="EsUtilitzable" Type="Byte" Nullable="false" />
+          <Property Name="M2" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TipusHabitacio" Type="Int32" Nullable="false" />
+          <Property Name="NumPlanta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Planta" Relationship="Self.FK_Habitacio_Planta" FromRole="Habitacio" ToRole="Planta" />
+          <NavigationProperty Name="TipusHabitacio1" Relationship="Self.FK_Habitacio_TipusHabitacio" FromRole="Habitacio" ToRole="TipusHabitacio" />
+          <NavigationProperty Name="Ocupacios" Relationship="Self.FK_Ocupacio_Habitacio" FromRole="Habitacio" ToRole="Ocupacio" />
+        </EntityType>
+        <EntityType Name="Hoste">
+          <Key>
+            <PropertyRef Name="IDHoste" />
+          </Key>
+          <Property Name="IDHoste" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNIPasaport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nacionalitat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adreca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codipostal" Type="Int32" Nullable="false" />
+          <Property Name="Poblacio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ocupacios" Relationship="Self.FK_Ocupacio_Hoste" FromRole="Hoste" ToRole="Ocupacio" />
+        </EntityType>
+        <EntityType Name="Ocupacio">
+          <Key>
+            <PropertyRef Name="IDOcupacio" />
+          </Key>
+          <Property Name="IDOcupacio" Type="Int32" Nullable="false" />
+          <Property Name="IDHoste" Type="Int32" Nullable="false" />
+          <Property Name="NumHabitacio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Habitacio" Relationship="Self.FK_Ocupacio_Habitacio" FromRole="Ocupacio" ToRole="Habitacio" />
+          <NavigationProperty Name="Hoste" Relationship="Self.FK_Ocupacio_Hoste" FromRole="Ocupacio" ToRole="Hoste" />
+        </EntityType>
+        <EntityType Name="Pensio">
+          <Key>
+            <PropertyRef Name="IDPensio" />
+          </Key>
+          <Property Name="IDPensio" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Preu" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TipusHabitacios" Relationship="Self.FK_TipusHabitacio_Pensio" FromRole="Pensio" ToRole="TipusHabitacio" />
+        </EntityType>
+        <EntityType Name="Planta">
+          <Key>
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Habitacios" Relationship="Self.FK_Habitacio_Planta" FromRole="Planta" ToRole="Habitacio" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="IDReserva" />
+          </Key>
+          <Property Name="IDReserva" Type="Int32" Nullable="false" />
+          <Property Name="Client" Type="Int32" />
+          <Property Name="Serveis" Type="Int32" Nullable="false" />
+          <Property Name="DataInici" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Bestreta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImportBrut" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IVA" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Hoste" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client1" Relationship="Self.FK_Reserva_Client" FromRole="Reserva" ToRole="Client" />
+          <NavigationProperty Name="Reserva_Has_Tipus_Habitacio" Relationship="Self.FK_Reserva_Has_Tipus_Habitacio_Reserva" FromRole="Reserva" ToRole="Reserva_Has_Tipus_Habitacio" />
+          <NavigationProperty Name="Servei" Relationship="Self.FK_Reserva_Servei" FromRole="Reserva" ToRole="Servei" />
+        </EntityType>
+        <EntityType Name="Servei">
+          <Key>
+            <PropertyRef Name="IDServei" />
+          </Key>
+          <Property Name="IDServei" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Preu" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reserva_Servei" FromRole="Servei" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Temporada">
+          <Key>
+            <PropertyRef Name="IDTemporada" />
+          </Key>
+          <Property Name="IDTemporada" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Multiplicador" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DataInici" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TipusHabitacios" Relationship="Self.Temporada_has_tipus_habitacio" FromRole="Temporada" ToRole="TipusHabitacio" />
+        </EntityType>
+        <EntityType Name="TipusHabitacio">
+          <Key>
+            <PropertyRef Name="IDTipus" />
+          </Key>
+          <Property Name="IDTipus" Type="Int32" Nullable="false" />
+          <Property Name="Capacitat" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SuplementPersona" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Temporada" Type="Int32" Nullable="false" />
+          <Property Name="Pensio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Habitacios" Relationship="Self.FK_Habitacio_TipusHabitacio" FromRole="TipusHabitacio" ToRole="Habitacio" />
+          <NavigationProperty Name="Pensio1" Relationship="Self.FK_TipusHabitacio_Pensio" FromRole="TipusHabitacio" ToRole="Pensio" />
+          <NavigationProperty Name="Reserva_Has_Tipus_Habitacio" Relationship="Self.FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio" FromRole="TipusHabitacio" ToRole="Reserva_Has_Tipus_Habitacio" />
+          <NavigationProperty Name="Temporadas" Relationship="Self.Temporada_has_tipus_habitacio" FromRole="TipusHabitacio" ToRole="Temporada" />
+        </EntityType>
+        <EntityType Name="Reserva_Has_Tipus_Habitacio">
+          <Key>
+            <PropertyRef Name="IDReserva" />
+            <PropertyRef Name="IDTipus" />
+            <PropertyRef Name="Quantitat" />
+          </Key>
+          <Property Name="IDReserva" Type="Int32" Nullable="false" />
+          <Property Name="IDTipus" Type="Int32" Nullable="false" />
+          <Property Name="Quantitat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK_Reserva_Has_Tipus_Habitacio_Reserva" FromRole="Reserva_Has_Tipus_Habitacio" ToRole="Reserva" />
+          <NavigationProperty Name="TipusHabitacio" Relationship="Self.FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio" FromRole="Reserva_Has_Tipus_Habitacio" ToRole="TipusHabitacio" />
+        </EntityType>
+        <Association Name="FK_Reserva_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IDClient" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Habitacio_Planta">
+          <End Role="Planta" Type="Self.Planta" Multiplicity="1" />
+          <End Role="Habitacio" Type="Self.Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Planta">
+              <PropertyRef Name="Num" />
+            </Principal>
+            <Dependent Role="Habitacio">
+              <PropertyRef Name="NumPlanta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Habitacio_TipusHabitacio">
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="1" />
+          <End Role="Habitacio" Type="Self.Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusHabitacio">
+              <PropertyRef Name="IDTipus" />
+            </Principal>
+            <Dependent Role="Habitacio">
+              <PropertyRef Name="TipusHabitacio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocupacio_Habitacio">
+          <End Role="Habitacio" Type="Self.Habitacio" Multiplicity="1" />
+          <End Role="Ocupacio" Type="Self.Ocupacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitacio">
+              <PropertyRef Name="Numero" />
+            </Principal>
+            <Dependent Role="Ocupacio">
+              <PropertyRef Name="NumHabitacio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocupacio_Hoste">
+          <End Role="Hoste" Type="Self.Hoste" Multiplicity="1" />
+          <End Role="Ocupacio" Type="Self.Ocupacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoste">
+              <PropertyRef Name="IDHoste" />
+            </Principal>
+            <Dependent Role="Ocupacio">
+              <PropertyRef Name="IDHoste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipusHabitacio_Pensio">
+          <End Role="Pensio" Type="Self.Pensio" Multiplicity="1" />
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pensio">
+              <PropertyRef Name="IDPensio" />
+            </Principal>
+            <Dependent Role="TipusHabitacio">
+              <PropertyRef Name="Pensio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Has_Tipus_Habitacio_Reserva">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Reserva_Has_Tipus_Habitacio" Type="Self.Reserva_Has_Tipus_Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="IDReserva" />
+            </Principal>
+            <Dependent Role="Reserva_Has_Tipus_Habitacio">
+              <PropertyRef Name="IDReserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Servei">
+          <End Role="Servei" Type="Self.Servei" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servei">
+              <PropertyRef Name="IDServei" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="Serveis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio">
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="1" />
+          <End Role="Reserva_Has_Tipus_Habitacio" Type="Self.Reserva_Has_Tipus_Habitacio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusHabitacio">
+              <PropertyRef Name="IDTipus" />
+            </Principal>
+            <Dependent Role="Reserva_Has_Tipus_Habitacio">
+              <PropertyRef Name="IDTipus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Temporada_has_tipus_habitacio">
+          <End Role="Temporada" Type="Self.Temporada" Multiplicity="*" />
+          <End Role="TipusHabitacio" Type="Self.TipusHabitacio" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="hotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Habitacios" EntityType="Self.Habitacio" />
+          <EntitySet Name="Hostes" EntityType="Self.Hoste" />
+          <EntitySet Name="Ocupacios" EntityType="Self.Ocupacio" />
+          <EntitySet Name="Pensios" EntityType="Self.Pensio" />
+          <EntitySet Name="Plantas" EntityType="Self.Planta" />
+          <EntitySet Name="Reservas" EntityType="Self.Reserva" />
+          <EntitySet Name="Serveis" EntityType="Self.Servei" />
+          <EntitySet Name="Temporadas" EntityType="Self.Temporada" />
+          <EntitySet Name="TipusHabitacios" EntityType="Self.TipusHabitacio" />
+          <EntitySet Name="Reserva_Has_Tipus_Habitacio" EntityType="Self.Reserva_Has_Tipus_Habitacio" />
+          <AssociationSet Name="FK_Reserva_Client" Association="Self.FK_Reserva_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Reserva" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Habitacio_Planta" Association="Self.FK_Habitacio_Planta">
+            <End Role="Planta" EntitySet="Plantas" />
+            <End Role="Habitacio" EntitySet="Habitacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Habitacio_TipusHabitacio" Association="Self.FK_Habitacio_TipusHabitacio">
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacios" />
+            <End Role="Habitacio" EntitySet="Habitacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocupacio_Habitacio" Association="Self.FK_Ocupacio_Habitacio">
+            <End Role="Habitacio" EntitySet="Habitacios" />
+            <End Role="Ocupacio" EntitySet="Ocupacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocupacio_Hoste" Association="Self.FK_Ocupacio_Hoste">
+            <End Role="Hoste" EntitySet="Hostes" />
+            <End Role="Ocupacio" EntitySet="Ocupacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipusHabitacio_Pensio" Association="Self.FK_TipusHabitacio_Pensio">
+            <End Role="Pensio" EntitySet="Pensios" />
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Has_Tipus_Habitacio_Reserva" Association="Self.FK_Reserva_Has_Tipus_Habitacio_Reserva">
+            <End Role="Reserva" EntitySet="Reservas" />
+            <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Servei" Association="Self.FK_Reserva_Servei">
+            <End Role="Servei" EntitySet="Serveis" />
+            <End Role="Reserva" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio" Association="Self.FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio">
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacios" />
+            <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="Temporada_has_tipus_habitacio" Association="Self.Temporada_has_tipus_habitacio">
+            <End Role="Temporada" EntitySet="Temporadas" />
+            <End Role="TipusHabitacio" EntitySet="TipusHabitacios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hotelModelStoreContainer" CdmEntityContainer="hotelEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="hotelModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitacios">
+            <EntityTypeMapping TypeName="hotelModel.Habitacio">
+              <MappingFragment StoreEntitySet="Habitacio">
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="TeTerrassa" ColumnName="TeTerrassa" />
+                <ScalarProperty Name="EsUtilitzable" ColumnName="EsUtilitzable" />
+                <ScalarProperty Name="M2" ColumnName="M2" />
+                <ScalarProperty Name="TipusHabitacio" ColumnName="TipusHabitacio" />
+                <ScalarProperty Name="NumPlanta" ColumnName="NumPlanta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hostes">
+            <EntityTypeMapping TypeName="hotelModel.Hoste">
+              <MappingFragment StoreEntitySet="Hoste">
+                <ScalarProperty Name="IDHoste" ColumnName="IDHoste" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="DNIPasaport" ColumnName="DNIPasaport" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Nacionalitat" ColumnName="Nacionalitat" />
+                <ScalarProperty Name="Adreca" ColumnName="Adreca" />
+                <ScalarProperty Name="Codipostal" ColumnName="Codipostal" />
+                <ScalarProperty Name="Poblacio" ColumnName="Poblacio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocupacios">
+            <EntityTypeMapping TypeName="hotelModel.Ocupacio">
+              <MappingFragment StoreEntitySet="Ocupacio">
+                <ScalarProperty Name="IDOcupacio" ColumnName="IDOcupacio" />
+                <ScalarProperty Name="IDHoste" ColumnName="IDHoste" />
+                <ScalarProperty Name="NumHabitacio" ColumnName="NumHabitacio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pensios">
+            <EntityTypeMapping TypeName="hotelModel.Pensio">
+              <MappingFragment StoreEntitySet="Pensio">
+                <ScalarProperty Name="IDPensio" ColumnName="IDPensio" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Descripcio" ColumnName="Descripcio" />
+                <ScalarProperty Name="Preu" ColumnName="Preu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plantas">
+            <EntityTypeMapping TypeName="hotelModel.Planta">
+              <MappingFragment StoreEntitySet="Planta">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="hotelModel.Reserva">
+              <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="IDReserva" ColumnName="IDReserva" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Serveis" ColumnName="Serveis" />
+                <ScalarProperty Name="DataInici" ColumnName="DataInici" />
+                <ScalarProperty Name="DataFinal" ColumnName="DataFinal" />
+                <ScalarProperty Name="Bestreta" ColumnName="Bestreta" />
+                <ScalarProperty Name="ImportBrut" ColumnName="ImportBrut" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Hoste" ColumnName="Hoste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serveis">
+            <EntityTypeMapping TypeName="hotelModel.Servei">
+              <MappingFragment StoreEntitySet="Servei">
+                <ScalarProperty Name="IDServei" ColumnName="IDServei" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="DataHora" ColumnName="DataHora" />
+                <ScalarProperty Name="Preu" ColumnName="Preu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temporadas">
+            <EntityTypeMapping TypeName="hotelModel.Temporada">
+              <MappingFragment StoreEntitySet="Temporada">
+                <ScalarProperty Name="IDTemporada" ColumnName="IDTemporada" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Multiplicador" ColumnName="Multiplicador" />
+                <ScalarProperty Name="DataInici" ColumnName="DataInici" />
+                <ScalarProperty Name="DataFinal" ColumnName="DataFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipusHabitacios">
+            <EntityTypeMapping TypeName="hotelModel.TipusHabitacio">
+              <MappingFragment StoreEntitySet="TipusHabitacio">
+                <ScalarProperty Name="IDTipus" ColumnName="IDTipus" />
+                <ScalarProperty Name="Capacitat" ColumnName="Capacitat" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="SuplementPersona" ColumnName="SuplementPersona" />
+                <ScalarProperty Name="Temporada" ColumnName="Temporada" />
+                <ScalarProperty Name="Pensio" ColumnName="Pensio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserva_Has_Tipus_Habitacio">
+            <EntityTypeMapping TypeName="hotelModel.Reserva_Has_Tipus_Habitacio">
+              <MappingFragment StoreEntitySet="Reserva_Has_Tipus_Habitacio">
+                <ScalarProperty Name="IDReserva" ColumnName="IDReserva" />
+                <ScalarProperty Name="IDTipus" ColumnName="IDTipus" />
+                <ScalarProperty Name="Quantitat" ColumnName="Quantitat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Temporada_has_tipus_habitacio" TypeName="hotelModel.Temporada_has_tipus_habitacio" StoreEntitySet="Temporada_has_tipus_habitacio">
+            <EndProperty Name="Temporada">
+              <ScalarProperty Name="IDTemporada" ColumnName="IDTemporada" />
+            </EndProperty>
+            <EndProperty Name="TipusHabitacio">
+              <ScalarProperty Name="IDTipus" ColumnName="IDTipus" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

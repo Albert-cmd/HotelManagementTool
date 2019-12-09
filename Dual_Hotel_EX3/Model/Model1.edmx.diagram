@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ccfe7c8f431049358558f7479335ec19" Name="Diagram1">
+        <EntityTypeShape EntityType="hotelModel.Client" Width="1.5" PointX="3.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Habitacio" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Hoste" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Ocupacio" Width="1.5" PointX="7.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Pensio" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Planta" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Reserva" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Servei" Width="1.5" PointX="3.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Temporada" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.TipusHabitacio" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Reserva_Has_Tipus_Habitacio" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="hotelModel.FK_Reserva_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Habitacio_Planta" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Habitacio_TipusHabitacio" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Ocupacio_Habitacio" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Ocupacio_Hoste" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_TipusHabitacio_Pensio" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Reserva_Has_Tipus_Habitacio_Reserva" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Reserva_Servei" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.Temporada_has_tipus_habitacio" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
