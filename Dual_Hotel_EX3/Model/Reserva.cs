@@ -29,11 +29,15 @@ namespace Dual_Hotel_EX3.Model
         public decimal ImportBrut { get; set; }
         public decimal IVA { get; set; }
         public decimal Total { get; set; }
+        public int Pensio { get; set; }
+        public int Temporada { get; set; }
         public int Hoste { get; set; }
     
         public virtual Client Client1 { get; set; }
+        public virtual Pensio Pensio1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reserva_Has_Tipus_Habitacio> Reserva_Has_Tipus_Habitacio { get; set; }
         public virtual Servei Servei { get; set; }
+        public virtual Temporada Temporada1 { get; set; }
     }
 }

@@ -19,22 +19,17 @@ namespace Dual_Hotel_EX3.Model
         {
             this.Habitacios = new HashSet<Habitacio>();
             this.Reserva_Has_Tipus_Habitacio = new HashSet<Reserva_Has_Tipus_Habitacio>();
-            this.Temporadas = new HashSet<Temporada>();
         }
     
         public int IDTipus { get; set; }
         public int Capacitat { get; set; }
+        public string Descripcio { get; set; }
+        public Nullable<decimal> SuplementPersona { get; set; }
         public string Nom { get; set; }
-        public decimal SuplementPersona { get; set; }
-        public int Temporada { get; set; }
-        public int Pensio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Habitacio> Habitacios { get; set; }
-        public virtual Pensio Pensio1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reserva_Has_Tipus_Habitacio> Reserva_Has_Tipus_Habitacio { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Temporada> Temporadas { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Dual_Hotel_EX3.Model
     public class TemporadaRepository
     {
 
-        private static hotelEntities dataContext = new hotelEntities();
+        private static hotelEntities1 dataContext = new hotelEntities1();
 
         private List<Temporada> _temporades { get; set; }
 

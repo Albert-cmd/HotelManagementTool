@@ -9,7 +9,8 @@ namespace Dual_Hotel_EX3.Model
     public class ClientsRepository
     {
 
-        private static hotelEntities dataContext = new hotelEntities();
+        private static hotelEntities1 
+            dataContext = new hotelEntities1();
 
         private List<Client> _clients { get; set; }
 

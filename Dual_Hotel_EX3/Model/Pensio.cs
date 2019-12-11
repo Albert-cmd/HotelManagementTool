@@ -17,7 +17,7 @@ namespace Dual_Hotel_EX3.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pensio()
         {
-            this.TipusHabitacios = new HashSet<TipusHabitacio>();
+            this.Reservas = new HashSet<Reserva>();
         }
     
         public int IDPensio { get; set; }
@@ -26,6 +26,6 @@ namespace Dual_Hotel_EX3.Model
         public decimal Preu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TipusHabitacio> TipusHabitacios { get; set; }
+        public virtual ICollection<Reserva> Reservas { get; set; }
     }
 }

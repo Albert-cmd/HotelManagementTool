@@ -17,16 +17,18 @@ namespace Dual_Hotel_EX3.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Temporada()
         {
-            this.TipusHabitacios = new HashSet<TipusHabitacio>();
+            this.Reservas = new HashSet<Reserva>();
         }
     
         public int IDTemporada { get; set; }
         public string Nom { get; set; }
         public decimal Multiplicador { get; set; }
-        public System.DateTime DataInici { get; set; }
-        public System.DateTime DataFinal { get; set; }
+        public int DataIniciDay { get; set; }
+        public int DataIniciMonth { get; set; }
+        public int DataFinalDay { get; set; }
+        public int DataFinalMonth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TipusHabitacio> TipusHabitacios { get; set; }
+        public virtual ICollection<Reserva> Reservas { get; set; }
     }
 }

@@ -29,6 +29,8 @@ namespace Dual_Hotel_EX3.Model
             Adreca = adreca;
             Codipostal = codipostal;
             Poblacio = poblacio;
+
+            this.Ocupacios = new HashSet<Ocupacio>();
         }
 
         public int IDHoste { get; set; }

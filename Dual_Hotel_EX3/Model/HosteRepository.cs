@@ -9,7 +9,7 @@ namespace Dual_Hotel_EX3.Model
     class HosteRepository
     {
 
-        private static hotelEntities dataContext = new hotelEntities();
+        private static hotelEntities1 dataContext = new hotelEntities1();
 
         public static Hoste getHoste(int IDHoste)
         {
