@@ -19,14 +19,7 @@ namespace Dual_Hotel_EX3.Model
         {
             this.Reservas = new HashSet<Reserva>();
         }
-
-        public Client(string nom) {
-
-            this.Nom = nom;
-            this.Reservas = new HashSet<Reserva>();
-
-        }
-
+    
         public int IDClient { get; set; }
         public string Nom { get; set; }
     

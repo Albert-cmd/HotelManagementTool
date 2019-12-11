@@ -106,6 +106,7 @@
             this.afegirTipusHabitacioB.TabIndex = 7;
             this.afegirTipusHabitacioB.Text = "+";
             this.afegirTipusHabitacioB.UseVisualStyleBackColor = true;
+            this.afegirTipusHabitacioB.Click += new System.EventHandler(this.AfegirTipusHabitacioB_Click);
             // 
             // tipusHabitacioB
             // 
@@ -143,6 +144,7 @@
             this.temporadesB.TabIndex = 8;
             this.temporadesB.Text = "TEMPORADES";
             this.temporadesB.UseVisualStyleBackColor = true;
+            this.temporadesB.Click += new System.EventHandler(this.TemporadesB_Click);
             // 
             // ultimesReservesGrid
             // 

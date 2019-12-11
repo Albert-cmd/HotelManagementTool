@@ -33,6 +33,7 @@ namespace Dual_Hotel_EX3.Model
         public virtual DbSet<Planta> Plantas { get; set; }
         public virtual DbSet<Reserva> Reservas { get; set; }
         public virtual DbSet<Servei> Serveis { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Temporada> Temporadas { get; set; }
         public virtual DbSet<TipusHabitacio> TipusHabitacios { get; set; }
         public virtual DbSet<Reserva_Has_Tipus_Habitacio> Reserva_Has_Tipus_Habitacio { get; set; }

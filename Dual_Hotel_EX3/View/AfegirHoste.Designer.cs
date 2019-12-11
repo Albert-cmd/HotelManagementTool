@@ -166,6 +166,7 @@
             this.codiPostalInput.Name = "codiPostalInput";
             this.codiPostalInput.Size = new System.Drawing.Size(227, 20);
             this.codiPostalInput.TabIndex = 17;
+            this.codiPostalInput.TextChanged += new System.EventHandler(this.CodiPostalInput_TextChanged);
             // 
             // poblacioLabel
             // 

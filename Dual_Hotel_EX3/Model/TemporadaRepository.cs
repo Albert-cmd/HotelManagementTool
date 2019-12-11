@@ -35,18 +35,7 @@ namespace Dual_Hotel_EX3.Model
         public static List<Temporada> GetTemporadas()
         {
 
-            List<Temporada> temporades;
-
-            try
-            {
-                temporades = dataContext.Temporadas.OrderBy(x => x.Nom).ToList();
-            }
-            catch (Exception ex) {
-
-                temporades = new List<Temporada>();
-
-            }
-
+            List<Temporada> temporades = dataContext.Temporadas.ToList();
             return temporades;
 
         }

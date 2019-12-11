@@ -22,13 +22,15 @@ namespace Dual_Hotel_EX3.Model
 
         public Hoste(string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio)
         {
-            this.Nom = nom;
-            this.DNIPasaport = dNIPasaport;
-            this.Telefon = telefon;
-            this.Nacionalitat = nacionalitat;
-            this.Adreca = adreca;
-            this.Codipostal = codipostal;
-            this.Poblacio = poblacio;
+            Nom = nom;
+            DNIPasaport = dNIPasaport;
+            Telefon = telefon;
+            Nacionalitat = nacionalitat;
+            Adreca = adreca;
+            Codipostal = codipostal;
+            Poblacio = poblacio;
+
+            Ocupacios = new HashSet<Ocupacio>();
         }
 
         public int IDHoste { get; set; }
@@ -42,10 +44,5 @@ namespace Dual_Hotel_EX3.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocupacio> Ocupacios { get; set; }
-
-        public override string ToString()
-        {
-            return this.Nom;
-        }
     }
 }

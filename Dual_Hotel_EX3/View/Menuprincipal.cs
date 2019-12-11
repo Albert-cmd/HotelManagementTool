@@ -69,5 +69,15 @@ namespace Dual_Hotel_EX3.View
         {
             AfegirTemporadaController atc = new AfegirTemporadaController();
         }
+
+        private void TemporadesB_Click(object sender, EventArgs e)
+        {
+            TemporadesController tc = new TemporadesController();
+        }
+
+        private void AfegirTipusHabitacioB_Click(object sender, EventArgs e)
+        {
+            AfegeixTipusHabitacioController athc = new AfegeixTipusHabitacioController();
+        }
     }
 }

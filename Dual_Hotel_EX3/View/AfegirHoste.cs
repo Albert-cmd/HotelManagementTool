@@ -34,5 +34,10 @@ namespace Dual_Hotel_EX3.View
         {
 
         }
+
+        private void CodiPostalInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

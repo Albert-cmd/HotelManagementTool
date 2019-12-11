@@ -28,6 +28,8 @@ namespace Dual_Hotel_EX3.Controller
 
             //
 
+            temporades = TemporadaRepository.GetTemporadas();
+
             at.Show();
 
             at.nomTemporadaInput.TextChanged += nomTemporadaChanged;
@@ -75,7 +77,7 @@ namespace Dual_Hotel_EX3.Controller
 
         private void nomTemporadaChanged(object sender, EventArgs e)
         {
-            temporades = TemporadaRepository.GetTemporadas();
+
             NomTemporada = at.nomTemporadaInput.Text.ToString();
             checkTemporadaNom();
 
@@ -130,7 +132,7 @@ namespace Dual_Hotel_EX3.Controller
             {
 
                 // string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio
-                temporada = new Temporada(NomTemporada, Multiplicador, DataInici, DataFinal);
+                //temporada = new Temporada(NomTemporada, Multiplicador, DataInici, DataFinal);
 
                 Console.WriteLine(temporada.ToString());
                 bool temporadavalida = false;
