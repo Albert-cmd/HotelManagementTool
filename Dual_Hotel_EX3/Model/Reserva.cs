@@ -19,8 +19,6 @@ namespace Dual_Hotel_EX3.Model
         {
             this.Reserva_Has_Tipus_Habitacio = new HashSet<Reserva_Has_Tipus_Habitacio>();
         }
-
-
     
         public int IDReserva { get; set; }
         public Nullable<int> Client { get; set; }

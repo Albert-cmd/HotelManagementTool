@@ -19,7 +19,17 @@ namespace Dual_Hotel_EX3.Model
         {
             this.Reservas = new HashSet<Reserva>();
         }
-    
+
+        public Temporada(string nom, decimal multiplicador, int dataIniciDay, int dataIniciMonth, int dataFinalDay, int dataFinalMonth)
+        {
+            Nom = nom;
+            Multiplicador = multiplicador;
+            DataIniciDay = dataIniciDay;
+            DataIniciMonth = dataIniciMonth;
+            DataFinalDay = dataFinalDay;
+            DataFinalMonth = dataFinalMonth;
+        }
+
         public int IDTemporada { get; set; }
         public string Nom { get; set; }
         public decimal Multiplicador { get; set; }

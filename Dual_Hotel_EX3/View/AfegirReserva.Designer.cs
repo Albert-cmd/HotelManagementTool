@@ -30,8 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.SeleccionaHosteInput = new System.Windows.Forms.ComboBox();
-            this.DataIniciInput = new System.Windows.Forms.TextBox();
-            this.DataFinalInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +50,8 @@
             this.temporadaInput = new System.Windows.Forms.TextBox();
             this.qtyLabel = new System.Windows.Forms.Label();
             this.quantitatInput = new System.Windows.Forms.TextBox();
+            this.DataIniciInput = new System.Windows.Forms.DateTimePicker();
+            this.DataFinalInput = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.Serveis)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,22 +74,6 @@
             this.SeleccionaHosteInput.Size = new System.Drawing.Size(184, 21);
             this.SeleccionaHosteInput.TabIndex = 1;
             this.SeleccionaHosteInput.SelectedIndexChanged += new System.EventHandler(this.SeleccionaHoste_SelectedIndexChanged);
-            // 
-            // DataIniciInput
-            // 
-            this.DataIniciInput.Location = new System.Drawing.Point(61, 314);
-            this.DataIniciInput.Name = "DataIniciInput";
-            this.DataIniciInput.Size = new System.Drawing.Size(184, 20);
-            this.DataIniciInput.TabIndex = 3;
-            this.DataIniciInput.TextChanged += new System.EventHandler(this.DataInici_TextChanged);
-            // 
-            // DataFinalInput
-            // 
-            this.DataFinalInput.Location = new System.Drawing.Point(61, 360);
-            this.DataFinalInput.Name = "DataFinalInput";
-            this.DataFinalInput.Size = new System.Drawing.Size(184, 20);
-            this.DataFinalInput.TabIndex = 4;
-            this.DataFinalInput.TextChanged += new System.EventHandler(this.DataFinal_TextChanged);
             // 
             // label2
             // 
@@ -227,6 +211,7 @@
             this.SeleccionaTipusInput.Name = "SeleccionaTipusInput";
             this.SeleccionaTipusInput.Size = new System.Drawing.Size(133, 21);
             this.SeleccionaTipusInput.TabIndex = 19;
+            this.SeleccionaTipusInput.SelectedIndexChanged += new System.EventHandler(this.SeleccionaTipusInput_SelectedIndexChanged);
             // 
             // tipusHabitacioLabel
             // 
@@ -271,11 +256,28 @@
             this.quantitatInput.Size = new System.Drawing.Size(45, 20);
             this.quantitatInput.TabIndex = 24;
             // 
+            // DataIniciInput
+            // 
+            this.DataIniciInput.Location = new System.Drawing.Point(61, 314);
+            this.DataIniciInput.Name = "DataIniciInput";
+            this.DataIniciInput.Size = new System.Drawing.Size(184, 20);
+            this.DataIniciInput.TabIndex = 25;
+            // 
+            // DataFinalInput
+            // 
+            this.DataFinalInput.Location = new System.Drawing.Point(61, 360);
+            this.DataFinalInput.Name = "DataFinalInput";
+            this.DataFinalInput.Size = new System.Drawing.Size(184, 20);
+            this.DataFinalInput.TabIndex = 26;
+            this.DataFinalInput.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            // 
             // AfegirReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 421);
+            this.Controls.Add(this.DataFinalInput);
+            this.Controls.Add(this.DataIniciInput);
             this.Controls.Add(this.quantitatInput);
             this.Controls.Add(this.qtyLabel);
             this.Controls.Add(this.temporadaLabel);
@@ -296,8 +298,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.DataFinalInput);
-            this.Controls.Add(this.DataIniciInput);
             this.Controls.Add(this.SeleccionaHosteInput);
             this.Controls.Add(this.label1);
             this.Name = "AfegirReserva";
@@ -327,13 +327,13 @@
         public System.Windows.Forms.ComboBox SeleccionaHosteInput;
         public System.Windows.Forms.ComboBox SeleccionaTipusInput;
         public System.Windows.Forms.TextBox quantitatInput;
-        public System.Windows.Forms.TextBox DataIniciInput;
-        public System.Windows.Forms.TextBox DataFinalInput;
         public System.Windows.Forms.DataGridView Serveis;
         public System.Windows.Forms.TextBox importBaseInput;
         public System.Windows.Forms.TextBox IVAInput;
         public System.Windows.Forms.TextBox importTotalInput;
         public System.Windows.Forms.TextBox temporadaInput;
         public System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker DataIniciInput;
+        private System.Windows.Forms.DateTimePicker DataFinalInput;
     }
 }

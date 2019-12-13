@@ -75,7 +75,6 @@
     <Compile Include="Model\Hoste.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\TipusHabitacioRepository.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -115,12 +114,13 @@
     <Compile Include="Model\Temporada.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\TemporadaRepository.cs" />
-    <Compile Include="Model\ClientsRepository.cs" />
-    <Compile Include="Model\HosteRepository.cs" />
     <Compile Include="Model\TipusHabitacio.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TipusHabitacioRepository.cs" />
+    <Compile Include="Model\TemporadaRepository.cs" />
+    <Compile Include="Model\ClientsRepository.cs" />
+    <Compile Include="Model\HosteRepository.cs" />
     <Compile Include="View\AfegirClient.cs">
       <SubType>Form</SubType>
     </Compile>

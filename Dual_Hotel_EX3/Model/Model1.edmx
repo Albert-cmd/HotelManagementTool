@@ -22,7 +22,7 @@ warning 6013: The table/view 'hotel.dbo.Client_has_hoste' does not have a primar
           <Key>
             <PropertyRef Name="Numero" />
           </Key>
-          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TeTerrassa" Type="tinyint" Nullable="false" />
           <Property Name="EsUtilitzable" Type="tinyint" Nullable="false" />
           <Property Name="M2" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -33,7 +33,7 @@ warning 6013: The table/view 'hotel.dbo.Client_has_hoste' does not have a primar
           <Key>
             <PropertyRef Name="IDHoste" />
           </Key>
-          <Property Name="IDHoste" Type="int" Nullable="false" />
+          <Property Name="IDHoste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DNIPasaport" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Telefon" Type="varchar" MaxLength="50" Nullable="false" />
@@ -54,7 +54,7 @@ warning 6013: The table/view 'hotel.dbo.Client_has_hoste' does not have a primar
           <Key>
             <PropertyRef Name="IDPensio" />
           </Key>
-          <Property Name="IDPensio" Type="int" Nullable="false" />
+          <Property Name="IDPensio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcio" Type="text" Nullable="false" />
           <Property Name="Preu" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -117,7 +117,7 @@ warning 6002: The table/view 'hotel.dbo.Reserva_Has_Tipus_Habitacio' does not ha
           <Key>
             <PropertyRef Name="IDTemporada" />
           </Key>
-          <Property Name="IDTemporada" Type="int" Nullable="false" />
+          <Property Name="IDTemporada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Multiplicador" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="DataIniciDay" Type="int" Nullable="false" />
@@ -346,7 +346,7 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <Key>
             <PropertyRef Name="Numero" />
           </Key>
-          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TeTerrassa" Type="Byte" Nullable="false" />
           <Property Name="EsUtilitzable" Type="Byte" Nullable="false" />
           <Property Name="M2" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -360,7 +360,7 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <Key>
             <PropertyRef Name="IDHoste" />
           </Key>
-          <Property Name="IDHoste" Type="Int32" Nullable="false" />
+          <Property Name="IDHoste" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DNIPasaport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -384,7 +384,7 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <Key>
             <PropertyRef Name="IDPensio" />
           </Key>
-          <Property Name="IDPensio" Type="Int32" Nullable="false" />
+          <Property Name="IDPensio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Preu" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -443,7 +443,7 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <Key>
             <PropertyRef Name="IDTemporada" />
           </Key>
-          <Property Name="IDTemporada" Type="Int32" Nullable="false" />
+          <Property Name="IDTemporada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Multiplicador" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="DataIniciDay" Type="Int32" Nullable="false" />

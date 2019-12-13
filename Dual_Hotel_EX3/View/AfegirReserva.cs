@@ -71,5 +71,15 @@ namespace Dual_Hotel_EX3.View
         {
 
         }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SeleccionaTipusInput_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

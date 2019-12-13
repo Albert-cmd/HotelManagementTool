@@ -32,6 +32,19 @@ namespace Dual_Hotel_EX3.Controller
 
             at.Show();
 
+            getDatesInicials();
+            inputs();
+        }
+
+        private void getDatesInicials() {
+
+            DataInici = at.dateTimeInici.Value;
+            DataFinal = at.dateTimeFinal.Value;
+
+        }
+
+        private void inputs() {
+
             at.nomTemporadaInput.TextChanged += nomTemporadaChanged;
             at.multiplicadorInput.TextChanged += multiplicadorChanged;
 
@@ -39,6 +52,7 @@ namespace Dual_Hotel_EX3.Controller
             at.dateTimeFinal.ValueChanged += dateFinalChanged;
 
             at.afegirTemporadaB.Click += AfegirTemporadaClick;
+
         }
 
         private void AfegirTemporadaClick(object sender, EventArgs e)
@@ -66,10 +80,21 @@ namespace Dual_Hotel_EX3.Controller
         private void multiplicadorChanged(object sender, EventArgs e)
         {
 
-            Multiplicador = Decimal.Parse(at.multiplicadorInput.Text);
-            if (checkIfEmptyOrNull(Multiplicador))
+            try
             {
+                Multiplicador = Decimal.Parse(at.multiplicadorInput.Text);
+                if (checkIfEmptyOrNull(Multiplicador))
+                {
+                    Multiplicador = 0;
+                }
+            }
+            catch (Exception ex) {
+                //
+
                 Multiplicador = 0;
+                at.multiplicadorInput.Text = "";
+
+
             }
 
             checkTemporada();
@@ -131,8 +156,8 @@ namespace Dual_Hotel_EX3.Controller
             try
             {
 
-                // string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio
-                //temporada = new Temporada(NomTemporada, Multiplicador, DataInici, DataFinal);
+                // string nom, decimal multiplicador, int dataIniciDay, int dataIniciMonth, int dataFinalDay, int dataFinalMonth
+                temporada = new Temporada(NomTemporada, Multiplicador, DataInici.Day, DataInici.Month, DataFinal.Day, DataFinal.Month);
 
                 Console.WriteLine(temporada.ToString());
                 bool temporadavalida = false;

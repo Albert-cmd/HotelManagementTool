@@ -27,9 +27,6 @@ namespace Dual_Hotel_EX3.Model
             Descripcio = descripcio;
             SuplementPersona = suplementPersona;
             Nom = nom;
-
-            this.Habitacios = new HashSet<Habitacio>();
-            this.Reserva_Has_Tipus_Habitacio = new HashSet<Reserva_Has_Tipus_Habitacio>();
         }
 
         public int IDTipus { get; set; }
