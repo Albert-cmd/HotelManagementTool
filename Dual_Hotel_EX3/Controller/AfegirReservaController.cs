@@ -14,6 +14,7 @@ namespace Dual_Hotel_EX3.Controller
 
         List<Hoste> hostes;
         List<TipusHabitacio> tipuss;
+        List<Servei> serveis;
 
         TipusHabitacio tipusHab = new TipusHabitacio();
 
@@ -33,6 +34,7 @@ namespace Dual_Hotel_EX3.Controller
 
             getHostes();
             getTipus();
+            getServeis();
 
             ar.Show();
 
@@ -42,6 +44,43 @@ namespace Dual_Hotel_EX3.Controller
 
             ar.SeleccionaTipusInput.SelectedIndexChanged += actualitzarTipus;
             ar.quantitatInput.TextChanged += quantitatChanged;
+
+            ar.SeleccionaTipusInput.SelectedIndexChanged += tipusHabitacioChanged;
+
+        }
+
+        private void tipusHabitacioChanged(object sender, EventArgs e)
+        {
+
+            calcPreus();
+
+        }
+
+        private void calcPreus() {
+
+            tipusHab = (TipusHabitacio)ar.SeleccionaTipusInput.SelectedItem;
+
+            try
+            {
+
+                importBrut = Math.Round(((Decimal)tipusHab.SuplementPersona * Int32.Parse(ar.quantitatInput.Text)), 2);
+                IVA = Math.Round(((importBrut / 100) * 21),2);
+                Total = Math.Round((importBrut + IVA),2);
+
+                updateCamps();
+            }
+            catch (Exception ex)
+            {
+                importBrut = 0;
+            }
+
+        }
+
+        private void updateCamps() {
+
+            ar.importBaseInput.Text = importBrut.ToString();
+            ar.IVAInput.Text = IVA.ToString();
+            ar.importTotalInput.Text = Total.ToString();
 
         }
 
@@ -66,15 +105,9 @@ namespace Dual_Hotel_EX3.Controller
 
             }
 
-            calcImport();
+            calcPreus();
 
             // CHECK
-
-        }
-
-        private void calcImport() {
-
-
 
         }
 
@@ -100,6 +133,17 @@ namespace Dual_Hotel_EX3.Controller
 
             ar.SeleccionaTipusInput.DisplayMember = "nom";
             ar.SeleccionaTipusInput.ValueMember = "nom";
+
+        }
+        private void getServeis()
+        {
+
+            serveis = ServeiRepository.getServeis();
+
+            ar.ServeisList.AutoGenerateColumns = false;
+            ar.ServeisList.DataSource = serveis;
+
+            ar.ServeisList.Columns[0].Width = 200;
 
         }
 

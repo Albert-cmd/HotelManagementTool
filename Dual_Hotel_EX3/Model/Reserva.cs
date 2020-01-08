@@ -18,11 +18,11 @@ namespace Dual_Hotel_EX3.Model
         public Reserva()
         {
             this.Reserva_Has_Tipus_Habitacio = new HashSet<Reserva_Has_Tipus_Habitacio>();
+            this.Serveis = new HashSet<Servei>();
         }
     
         public int IDReserva { get; set; }
         public Nullable<int> Client { get; set; }
-        public int Serveis { get; set; }
         public System.DateTime DataInici { get; set; }
         public System.DateTime DataFinal { get; set; }
         public decimal Bestreta { get; set; }
@@ -37,7 +37,8 @@ namespace Dual_Hotel_EX3.Model
         public virtual Pensio Pensio1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reserva_Has_Tipus_Habitacio> Reserva_Has_Tipus_Habitacio { get; set; }
-        public virtual Servei Servei { get; set; }
         public virtual Temporada Temporada1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Servei> Serveis { get; set; }
     }
 }

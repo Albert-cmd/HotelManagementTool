@@ -108,6 +108,7 @@
     <Compile Include="Model\Servei.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ServeiRepository.cs" />
     <Compile Include="Model\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -127,7 +128,7 @@
     <Compile Include="View\AfegirClient.Designer.cs">
       <DependentUpon>AfegirClient.cs</DependentUpon>
     </Compile>
-	<Compile Include="View\AfegirReserva.cs">
+    <Compile Include="View\AfegirReserva.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\AfegirReserva.Designer.cs">
@@ -201,7 +202,7 @@
     <EmbeddedResource Include="View\AfegirHoste.resx">
       <DependentUpon>AfegirHoste.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="View\AfegirReserva.resx">
+    <EmbeddedResource Include="View\AfegirReserva.resx">
       <DependentUpon>AfegirReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AfegirNouServei.resx">

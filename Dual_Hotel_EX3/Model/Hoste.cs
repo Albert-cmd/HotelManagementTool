@@ -20,6 +20,7 @@ namespace Dual_Hotel_EX3.Model
             this.Ocupacios = new HashSet<Ocupacio>();
         }
 
+        //string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio
         public Hoste(string nom, string dNIPasaport, string telefon, string nacionalitat, string adreca, int codipostal, string poblacio)
         {
             Nom = nom;
@@ -29,6 +30,8 @@ namespace Dual_Hotel_EX3.Model
             Adreca = adreca;
             Codipostal = codipostal;
             Poblacio = poblacio;
+
+            this.Ocupacios = new HashSet<Ocupacio>();
         }
 
         public int IDHoste { get; set; }

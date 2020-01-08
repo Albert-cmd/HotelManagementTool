@@ -22,7 +22,6 @@ namespace Dual_Hotel_EX3.Model
     
         public int IDServei { get; set; }
         public string Nom { get; set; }
-        public System.DateTime DataHora { get; set; }
         public Nullable<decimal> Preu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

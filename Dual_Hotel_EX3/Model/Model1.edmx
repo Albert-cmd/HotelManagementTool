@@ -71,7 +71,6 @@ warning 6013: The table/view 'hotel.dbo.Client_has_hoste' does not have a primar
           </Key>
           <Property Name="IDReserva" Type="int" Nullable="false" />
           <Property Name="Client" Type="int" />
-          <Property Name="Serveis" Type="int" Nullable="false" />
           <Property Name="DataInici" Type="date" Nullable="false" />
           <Property Name="DataFinal" Type="date" Nullable="false" />
           <Property Name="Bestreta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -81,6 +80,16 @@ warning 6013: The table/view 'hotel.dbo.Client_has_hoste' does not have a primar
           <Property Name="Pensio" Type="int" Nullable="false" />
           <Property Name="Temporada" Type="int" Nullable="false" />
           <Property Name="Hoste" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'hotel.dbo.Reserva_has_serveis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Reserva_has_serveis">
+          <Key>
+            <PropertyRef Name="IDServei" />
+            <PropertyRef Name="IDReserva" />
+          </Key>
+          <Property Name="IDServei" Type="int" Nullable="false" />
+          <Property Name="IDReserva" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'hotel.dbo.Reserva_Has_Tipus_Habitacio' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -100,7 +109,6 @@ warning 6002: The table/view 'hotel.dbo.Reserva_Has_Tipus_Habitacio' does not ha
           </Key>
           <Property Name="IDServei" Type="int" Nullable="false" />
           <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DataHora" Type="datetime" Nullable="false" />
           <Property Name="Preu" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -206,6 +214,30 @@ error 6004: The table 'hotel.dbo.Client_has_hoste' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reserva_has_serveis_Reserva">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+          <End Role="Reserva_has_serveis" Type="Self.Reserva_has_serveis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserva">
+              <PropertyRef Name="IDReserva" />
+            </Principal>
+            <Dependent Role="Reserva_has_serveis">
+              <PropertyRef Name="IDReserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserva_has_serveis_Servei">
+          <End Role="Servei" Type="Self.Servei" Multiplicity="1" />
+          <End Role="Reserva_has_serveis" Type="Self.Reserva_has_serveis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servei">
+              <PropertyRef Name="IDServei" />
+            </Principal>
+            <Dependent Role="Reserva_has_serveis">
+              <PropertyRef Name="IDServei" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reserva_Has_Tipus_Habitacio_Reserva">
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
           <End Role="Reserva_Has_Tipus_Habitacio" Type="Self.Reserva_Has_Tipus_Habitacio" Multiplicity="*" />
@@ -242,18 +274,6 @@ error 6004: The table 'hotel.dbo.Client_has_hoste' is referenced by a relationsh
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reserva_Servei">
-          <End Role="Servei" Type="Self.Servei" Multiplicity="1" />
-          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Servei">
-              <PropertyRef Name="IDServei" />
-            </Principal>
-            <Dependent Role="Reserva">
-              <PropertyRef Name="Serveis" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reserva_Temporada">
           <End Role="Temporada" Type="Self.Temporada" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
@@ -281,6 +301,12 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Temporada" EntityType="Self.Temporada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipusHabitacio" EntityType="Self.TipusHabitacio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva_has_serveis" EntityType="Self.Reserva_has_serveis" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Reserva_has_serveis].[IDServei] AS [IDServei], 
+    [Reserva_has_serveis].[IDReserva] AS [IDReserva]
+    FROM [dbo].[Reserva_has_serveis] AS [Reserva_has_serveis]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Reserva_Has_Tipus_Habitacio" EntityType="Self.Reserva_Has_Tipus_Habitacio" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Reserva_Has_Tipus_Habitacio].[IDReserva] AS [IDReserva], 
@@ -308,6 +334,14 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
             <End Role="Client" EntitySet="Client" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reserva_has_serveis_Reserva" Association="Self.FK_Reserva_has_serveis_Reserva">
+            <End Role="Reserva" EntitySet="Reserva" />
+            <End Role="Reserva_has_serveis" EntitySet="Reserva_has_serveis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserva_has_serveis_Servei" Association="Self.FK_Reserva_has_serveis_Servei">
+            <End Role="Servei" EntitySet="Servei" />
+            <End Role="Reserva_has_serveis" EntitySet="Reserva_has_serveis" />
+          </AssociationSet>
           <AssociationSet Name="FK_Reserva_Has_Tipus_Habitacio_Reserva" Association="Self.FK_Reserva_Has_Tipus_Habitacio_Reserva">
             <End Role="Reserva" EntitySet="Reserva" />
             <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
@@ -318,10 +352,6 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           </AssociationSet>
           <AssociationSet Name="FK_Reserva_Pensio" Association="Self.FK_Reserva_Pensio">
             <End Role="Pensio" EntitySet="Pensio" />
-            <End Role="Reserva" EntitySet="Reserva" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reserva_Servei" Association="Self.FK_Reserva_Servei">
-            <End Role="Servei" EntitySet="Servei" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
           <AssociationSet Name="FK_Reserva_Temporada" Association="Self.FK_Reserva_Temporada">
@@ -403,7 +433,6 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           </Key>
           <Property Name="IDReserva" Type="Int32" Nullable="false" />
           <Property Name="Client" Type="Int32" />
-          <Property Name="Serveis" Type="Int32" Nullable="false" />
           <Property Name="DataInici" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DataFinal" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Bestreta" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -416,8 +445,8 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <NavigationProperty Name="Client1" Relationship="Self.FK_Reserva_Client" FromRole="Reserva" ToRole="Client" />
           <NavigationProperty Name="Pensio1" Relationship="Self.FK_Reserva_Pensio" FromRole="Reserva" ToRole="Pensio" />
           <NavigationProperty Name="Reserva_Has_Tipus_Habitacio" Relationship="Self.FK_Reserva_Has_Tipus_Habitacio_Reserva" FromRole="Reserva" ToRole="Reserva_Has_Tipus_Habitacio" />
-          <NavigationProperty Name="Servei" Relationship="Self.FK_Reserva_Servei" FromRole="Reserva" ToRole="Servei" />
           <NavigationProperty Name="Temporada1" Relationship="Self.FK_Reserva_Temporada" FromRole="Reserva" ToRole="Temporada" />
+          <NavigationProperty Name="Serveis" Relationship="Self.Reserva_has_serveis" FromRole="Reserva" ToRole="Servei" />
         </EntityType>
         <EntityType Name="Servei">
           <Key>
@@ -425,9 +454,8 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           </Key>
           <Property Name="IDServei" Type="Int32" Nullable="false" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataHora" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Preu" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Reservas" Relationship="Self.FK_Reserva_Servei" FromRole="Servei" ToRole="Reserva" />
+          <NavigationProperty Name="Reservas" Relationship="Self.Reserva_has_serveis" FromRole="Servei" ToRole="Reserva" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -560,18 +588,6 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reserva_Servei">
-          <End Role="Servei" Type="Self.Servei" Multiplicity="1" />
-          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Servei">
-              <PropertyRef Name="IDServei" />
-            </Principal>
-            <Dependent Role="Reserva">
-              <PropertyRef Name="Serveis" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reserva_Temporada">
           <End Role="Temporada" Type="Self.Temporada" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
@@ -595,6 +611,10 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
               <PropertyRef Name="IDTipus" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="Reserva_has_serveis">
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <End Role="Servei" Type="Self.Servei" Multiplicity="*" />
         </Association>
         <EntityContainer Name="hotelEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="Self.Client" />
@@ -637,10 +657,6 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
             <End Role="Reserva" EntitySet="Reservas" />
             <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reserva_Servei" Association="Self.FK_Reserva_Servei">
-            <End Role="Servei" EntitySet="Serveis" />
-            <End Role="Reserva" EntitySet="Reservas" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reserva_Temporada" Association="Self.FK_Reserva_Temporada">
             <End Role="Temporada" EntitySet="Temporadas" />
             <End Role="Reserva" EntitySet="Reservas" />
@@ -648,6 +664,10 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
           <AssociationSet Name="FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio" Association="Self.FK_Reserva_Has_Tipus_Habitacio_TipusHabitacio">
             <End Role="TipusHabitacio" EntitySet="TipusHabitacios" />
             <End Role="Reserva_Has_Tipus_Habitacio" EntitySet="Reserva_Has_Tipus_Habitacio" />
+          </AssociationSet>
+          <AssociationSet Name="Reserva_has_serveis" Association="Self.Reserva_has_serveis">
+            <End Role="Reserva" EntitySet="Reservas" />
+            <End Role="Servei" EntitySet="Serveis" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -721,7 +741,6 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
               <MappingFragment StoreEntitySet="Reserva">
                 <ScalarProperty Name="IDReserva" ColumnName="IDReserva" />
                 <ScalarProperty Name="Client" ColumnName="Client" />
-                <ScalarProperty Name="Serveis" ColumnName="Serveis" />
                 <ScalarProperty Name="DataInici" ColumnName="DataInici" />
                 <ScalarProperty Name="DataFinal" ColumnName="DataFinal" />
                 <ScalarProperty Name="Bestreta" ColumnName="Bestreta" />
@@ -739,7 +758,6 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
               <MappingFragment StoreEntitySet="Servei">
                 <ScalarProperty Name="IDServei" ColumnName="IDServei" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="DataHora" ColumnName="DataHora" />
                 <ScalarProperty Name="Preu" ColumnName="Preu" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -788,6 +806,14 @@ error 6004: The table 'hotel.dbo.Temporada_has_tipus_habitacio' is referenced by
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="Reserva_has_serveis" TypeName="hotelModel.Reserva_has_serveis" StoreEntitySet="Reserva_has_serveis">
+            <EndProperty Name="Reserva">
+              <ScalarProperty Name="IDReserva" ColumnName="IDReserva" />
+            </EndProperty>
+            <EndProperty Name="Servei">
+              <ScalarProperty Name="IDServei" ColumnName="IDServei" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

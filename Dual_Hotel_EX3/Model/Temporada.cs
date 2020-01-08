@@ -20,6 +20,7 @@ namespace Dual_Hotel_EX3.Model
             this.Reservas = new HashSet<Reserva>();
         }
 
+        // string nom, decimal multiplicador, int dataIniciDay, int dataIniciMonth, int dataFinalDay, int dataFinalMonth
         public Temporada(string nom, decimal multiplicador, int dataIniciDay, int dataIniciMonth, int dataFinalDay, int dataFinalMonth)
         {
             Nom = nom;
@@ -28,6 +29,8 @@ namespace Dual_Hotel_EX3.Model
             DataIniciMonth = dataIniciMonth;
             DataFinalDay = dataFinalDay;
             DataFinalMonth = dataFinalMonth;
+
+            this.Reservas = new HashSet<Reserva>();
         }
 
         public int IDTemporada { get; set; }
