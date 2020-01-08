@@ -13,14 +13,29 @@ namespace Dual_Hotel_EX3.Model
 
         public static Hoste getHoste(int IDHoste)
         {
-            Hoste h = dataContext.Hostes.Where(x => x.IDHoste == IDHoste).SingleOrDefault();
-            return h;
+            try
+            {
+                Hoste h = dataContext.Hostes.Where(x => x.IDHoste == IDHoste).SingleOrDefault();
+                return h;
+            }
+            catch (Exception ex) {
+                Hoste h = new Hoste();
+                return h;
+            }
+            
         }
 
         public static List<Hoste> getHostes()
         {
-            List<Hoste> hostes = dataContext.Hostes.ToList();
-            return hostes;
+            try
+            {
+                List<Hoste> hostes = dataContext.Hostes.ToList();
+                return hostes;
+            }
+            catch (Exception ex) {
+                List<Hoste> hostes = new List<Hoste>();
+                return hostes;
+            }
         }
 
         public static Hoste InsertHoste(Hoste h)

@@ -35,15 +35,29 @@ namespace Dual_Hotel_EX3.Model
         public static List<Temporada> GetTemporadas()
         {
 
-            List<Temporada> temporades = dataContext.Temporadas.ToList();
-            return temporades;
+            try
+            {
+                List<Temporada> temporades = dataContext.Temporadas.ToList();
+                return temporades;
+            }
+            catch (Exception ex) {
+                List<Temporada> temporades = new List<Temporada>();
+                return temporades;
+            }
 
         }
 
         public static Temporada getTemporada(int IDTemporada)
         {
-            Temporada t = dataContext.Temporadas.Where(x => x.IDTemporada == IDTemporada).SingleOrDefault();
-            return t;
+            try
+            {
+                Temporada t = dataContext.Temporadas.Where(x => x.IDTemporada == IDTemporada).SingleOrDefault();
+                return t;
+            }
+            catch (Exception ex) {
+                Temporada t = new Temporada();
+                return t;
+            }
         }
 
         public static Temporada InsertTemporada(Temporada t)

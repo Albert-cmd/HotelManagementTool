@@ -9,13 +9,19 @@ using System.Threading.Tasks;
 namespace Dual_Hotel_EX3.Controller
 {
 
-    public class AfegirReservaController
+    public class AfegirReservaController : CommonController
     {
 
         List<Hoste> hostes;
         List<TipusHabitacio> tipuss;
 
         TipusHabitacio tipusHab = new TipusHabitacio();
+
+        int qty = 0;
+
+        decimal importBrut = 0;
+        decimal IVA = 0;
+        decimal Total = 0;
 
         AfegirReserva ar = new AfegirReserva();
 
@@ -35,6 +41,40 @@ namespace Dual_Hotel_EX3.Controller
         private void inputs() {
 
             ar.SeleccionaTipusInput.SelectedIndexChanged += actualitzarTipus;
+            ar.quantitatInput.TextChanged += quantitatChanged;
+
+        }
+
+        private void quantitatChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                qty = Int32.Parse(ar.quantitatInput.Text);
+                if (checkIfEmptyOrNull(qty))
+                {
+                    qty = 0;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                qty = 0;
+                ar.quantitatInput.Text = "";
+
+            }
+
+            calcImport();
+
+            // CHECK
+
+        }
+
+        private void calcImport() {
+
+
 
         }
 

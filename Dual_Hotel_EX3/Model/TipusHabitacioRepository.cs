@@ -13,14 +13,28 @@ namespace Dual_Hotel_EX3.Model
 
         public static TipusHabitacio getTipusHabitacio(int IDTipus)
         {
-            TipusHabitacio th = dataContext.TipusHabitacios.Where(x => x.IDTipus == IDTipus).SingleOrDefault();
-            return th;
+            try
+            {
+                TipusHabitacio th = dataContext.TipusHabitacios.Where(x => x.IDTipus == IDTipus).SingleOrDefault();
+                return th;
+            }
+            catch (Exception ex) {
+                TipusHabitacio th = new TipusHabitacio();
+                return th;
+            }
         }
 
         public static List<TipusHabitacio> getTipusHabitacions()
         {
-            List<TipusHabitacio> tipus = dataContext.TipusHabitacios.ToList();
-            return tipus;
+            try
+            {
+                List<TipusHabitacio> tipus = dataContext.TipusHabitacios.ToList();
+                return tipus;
+            }
+            catch (Exception ex) {
+                List<TipusHabitacio> tipus = new List<TipusHabitacio>();
+                return tipus;
+            }
         }
 
         public static TipusHabitacio InsertTipus(TipusHabitacio th)

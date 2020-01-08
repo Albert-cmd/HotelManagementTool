@@ -127,6 +127,12 @@
     <Compile Include="View\AfegirClient.Designer.cs">
       <DependentUpon>AfegirClient.cs</DependentUpon>
     </Compile>
+	<Compile Include="View\AfegirReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AfegirReserva.Designer.cs">
+      <DependentUpon>AfegirReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AfegirHoste.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,12 +150,6 @@
     </Compile>
     <Compile Include="View\AfegirPlanta.Designer.cs">
       <DependentUpon>AfegirPlanta.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\AfegirReserva.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\AfegirReserva.Designer.cs">
-      <DependentUpon>AfegirReserva.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AfegirTemporada.cs">
       <SubType>Form</SubType>
@@ -201,14 +201,14 @@
     <EmbeddedResource Include="View\AfegirHoste.resx">
       <DependentUpon>AfegirHoste.cs</DependentUpon>
     </EmbeddedResource>
+	<EmbeddedResource Include="View\AfegirReserva.resx">
+      <DependentUpon>AfegirReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AfegirNouServei.resx">
       <DependentUpon>AfegirNouServei.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AfegirPlanta.resx">
       <DependentUpon>AfegirPlanta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\AfegirReserva.resx">
-      <DependentUpon>AfegirReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AfegirTemporada.resx">
       <DependentUpon>AfegirTemporada.cs</DependentUpon>
