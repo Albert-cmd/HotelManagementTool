@@ -26,5 +26,10 @@ namespace Dual_Hotel_EX3.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reserva> Reservas { get; set; }
+
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }

@@ -36,6 +36,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ServeisList = new System.Windows.Forms.DataGridView();
+            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importBaseInput = new System.Windows.Forms.TextBox();
             this.IVAInput = new System.Windows.Forms.TextBox();
             this.importTotalInput = new System.Windows.Forms.TextBox();
@@ -52,7 +53,8 @@
             this.quantitatInput = new System.Windows.Forms.TextBox();
             this.DataIniciInput = new System.Windows.Forms.DateTimePicker();
             this.DataFinalInput = new System.Windows.Forms.DateTimePicker();
-            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.afegirServeiButton = new System.Windows.Forms.Button();
+            this.preuServeisBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ServeisList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,16 +72,16 @@
             // SeleccionaHosteInput
             // 
             this.SeleccionaHosteInput.FormattingEnabled = true;
-            this.SeleccionaHosteInput.Location = new System.Drawing.Point(61, 56);
+            this.SeleccionaHosteInput.Location = new System.Drawing.Point(12, 57);
             this.SeleccionaHosteInput.Name = "SeleccionaHosteInput";
-            this.SeleccionaHosteInput.Size = new System.Drawing.Size(184, 21);
+            this.SeleccionaHosteInput.Size = new System.Drawing.Size(283, 21);
             this.SeleccionaHosteInput.TabIndex = 1;
             this.SeleccionaHosteInput.SelectedIndexChanged += new System.EventHandler(this.SeleccionaHoste_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 37);
+            this.label2.Location = new System.Drawing.Point(12, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -88,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 135);
+            this.label3.Location = new System.Drawing.Point(12, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 6;
@@ -97,7 +99,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 298);
+            this.label4.Location = new System.Drawing.Point(12, 299);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 7;
@@ -106,7 +108,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(61, 344);
+            this.label5.Location = new System.Drawing.Point(12, 345);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 8;
@@ -116,7 +118,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(281, 37);
+            this.label6.Location = new System.Drawing.Point(344, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 16);
             this.label6.TabIndex = 9;
@@ -124,40 +126,52 @@
             // 
             // ServeisList
             // 
+            this.ServeisList.AllowUserToAddRows = false;
+            this.ServeisList.AllowUserToDeleteRows = false;
+            this.ServeisList.AllowUserToResizeColumns = false;
+            this.ServeisList.AllowUserToResizeRows = false;
+            this.ServeisList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ServeisList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ServeisList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nom});
-            this.ServeisList.Location = new System.Drawing.Point(61, 151);
+            this.ServeisList.Location = new System.Drawing.Point(12, 176);
             this.ServeisList.Name = "ServeisList";
-            this.ServeisList.Size = new System.Drawing.Size(184, 143);
+            this.ServeisList.Size = new System.Drawing.Size(283, 119);
             this.ServeisList.TabIndex = 10;
+            // 
+            // Nom
+            // 
+            this.Nom.DataPropertyName = "Nom";
+            this.Nom.HeaderText = "Nom";
+            this.Nom.Name = "Nom";
+            this.Nom.ReadOnly = true;
             // 
             // importBaseInput
             // 
-            this.importBaseInput.Location = new System.Drawing.Point(281, 110);
+            this.importBaseInput.Location = new System.Drawing.Point(347, 111);
             this.importBaseInput.Name = "importBaseInput";
             this.importBaseInput.ReadOnly = true;
-            this.importBaseInput.Size = new System.Drawing.Size(110, 20);
+            this.importBaseInput.Size = new System.Drawing.Size(174, 20);
             this.importBaseInput.TabIndex = 11;
             this.importBaseInput.Text = "0.00";
             this.importBaseInput.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // IVAInput
             // 
-            this.IVAInput.Location = new System.Drawing.Point(281, 172);
+            this.IVAInput.Location = new System.Drawing.Point(347, 173);
             this.IVAInput.Name = "IVAInput";
             this.IVAInput.ReadOnly = true;
-            this.IVAInput.Size = new System.Drawing.Size(110, 20);
+            this.IVAInput.Size = new System.Drawing.Size(174, 20);
             this.IVAInput.TabIndex = 12;
             this.IVAInput.Text = "0.00";
             this.IVAInput.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // importTotalInput
             // 
-            this.importTotalInput.Location = new System.Drawing.Point(281, 234);
+            this.importTotalInput.Location = new System.Drawing.Point(347, 235);
             this.importTotalInput.Name = "importTotalInput";
             this.importTotalInput.ReadOnly = true;
-            this.importTotalInput.Size = new System.Drawing.Size(110, 20);
+            this.importTotalInput.Size = new System.Drawing.Size(174, 20);
             this.importTotalInput.TabIndex = 13;
             this.importTotalInput.Text = "0.00";
             this.importTotalInput.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -165,7 +179,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(281, 91);
+            this.label7.Location = new System.Drawing.Point(347, 92);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 14;
@@ -174,7 +188,7 @@
             // IVALabel
             // 
             this.IVALabel.AutoSize = true;
-            this.IVALabel.Location = new System.Drawing.Point(278, 156);
+            this.IVALabel.Location = new System.Drawing.Point(344, 157);
             this.IVALabel.Name = "IVALabel";
             this.IVALabel.Size = new System.Drawing.Size(24, 13);
             this.IVALabel.TabIndex = 15;
@@ -183,7 +197,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(278, 218);
+            this.label9.Location = new System.Drawing.Point(344, 219);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(63, 13);
             this.label9.TabIndex = 16;
@@ -204,16 +218,17 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(278, 331);
+            this.label10.Location = new System.Drawing.Point(344, 332);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(127, 13);
             this.label10.TabIndex = 18;
             this.label10.Text = "ERROR EN LES DADES";
+            this.label10.Visible = false;
             // 
             // SeleccionaTipusInput
             // 
             this.SeleccionaTipusInput.FormattingEnabled = true;
-            this.SeleccionaTipusInput.Location = new System.Drawing.Point(61, 107);
+            this.SeleccionaTipusInput.Location = new System.Drawing.Point(12, 108);
             this.SeleccionaTipusInput.Name = "SeleccionaTipusInput";
             this.SeleccionaTipusInput.Size = new System.Drawing.Size(133, 21);
             this.SeleccionaTipusInput.TabIndex = 19;
@@ -221,7 +236,7 @@
             // tipusHabitacioLabel
             // 
             this.tipusHabitacioLabel.AutoSize = true;
-            this.tipusHabitacioLabel.Location = new System.Drawing.Point(58, 91);
+            this.tipusHabitacioLabel.Location = new System.Drawing.Point(9, 92);
             this.tipusHabitacioLabel.Name = "tipusHabitacioLabel";
             this.tipusHabitacioLabel.Size = new System.Drawing.Size(87, 13);
             this.tipusHabitacioLabel.TabIndex = 20;
@@ -231,7 +246,7 @@
             // temporadaLabel
             // 
             this.temporadaLabel.AutoSize = true;
-            this.temporadaLabel.Location = new System.Drawing.Point(278, 275);
+            this.temporadaLabel.Location = new System.Drawing.Point(344, 276);
             this.temporadaLabel.Name = "temporadaLabel";
             this.temporadaLabel.Size = new System.Drawing.Size(61, 13);
             this.temporadaLabel.TabIndex = 22;
@@ -239,16 +254,16 @@
             // 
             // temporadaInput
             // 
-            this.temporadaInput.Location = new System.Drawing.Point(281, 291);
+            this.temporadaInput.Location = new System.Drawing.Point(347, 292);
             this.temporadaInput.Name = "temporadaInput";
             this.temporadaInput.ReadOnly = true;
-            this.temporadaInput.Size = new System.Drawing.Size(110, 20);
+            this.temporadaInput.Size = new System.Drawing.Size(174, 20);
             this.temporadaInput.TabIndex = 21;
             // 
             // qtyLabel
             // 
             this.qtyLabel.AutoSize = true;
-            this.qtyLabel.Location = new System.Drawing.Point(197, 91);
+            this.qtyLabel.Location = new System.Drawing.Point(148, 92);
             this.qtyLabel.Name = "qtyLabel";
             this.qtyLabel.Size = new System.Drawing.Size(51, 13);
             this.qtyLabel.TabIndex = 23;
@@ -256,37 +271,49 @@
             // 
             // quantitatInput
             // 
-            this.quantitatInput.Location = new System.Drawing.Point(200, 108);
+            this.quantitatInput.Location = new System.Drawing.Point(151, 109);
             this.quantitatInput.Name = "quantitatInput";
-            this.quantitatInput.Size = new System.Drawing.Size(45, 20);
+            this.quantitatInput.Size = new System.Drawing.Size(144, 20);
             this.quantitatInput.TabIndex = 24;
             // 
             // DataIniciInput
             // 
-            this.DataIniciInput.Location = new System.Drawing.Point(61, 314);
+            this.DataIniciInput.Location = new System.Drawing.Point(12, 315);
             this.DataIniciInput.Name = "DataIniciInput";
-            this.DataIniciInput.Size = new System.Drawing.Size(186, 20);
+            this.DataIniciInput.Size = new System.Drawing.Size(285, 20);
             this.DataIniciInput.TabIndex = 25;
             // 
             // DataFinalInput
             // 
-            this.DataFinalInput.Location = new System.Drawing.Point(61, 360);
+            this.DataFinalInput.Location = new System.Drawing.Point(12, 361);
             this.DataFinalInput.Name = "DataFinalInput";
-            this.DataFinalInput.Size = new System.Drawing.Size(184, 20);
+            this.DataFinalInput.Size = new System.Drawing.Size(283, 20);
             this.DataFinalInput.TabIndex = 26;
             // 
-            // Nom
+            // afegirServeiButton
             // 
-            this.Nom.DataPropertyName = "Nom";
-            this.Nom.HeaderText = "Nom";
-            this.Nom.Name = "Nom";
-            this.Nom.ReadOnly = true;
+            this.afegirServeiButton.Location = new System.Drawing.Point(12, 152);
+            this.afegirServeiButton.Name = "afegirServeiButton";
+            this.afegirServeiButton.Size = new System.Drawing.Size(98, 23);
+            this.afegirServeiButton.TabIndex = 27;
+            this.afegirServeiButton.Text = "Afegir servei";
+            this.afegirServeiButton.UseVisualStyleBackColor = true;
+            // 
+            // preuServeisBox
+            // 
+            this.preuServeisBox.Location = new System.Drawing.Point(170, 154);
+            this.preuServeisBox.Name = "preuServeisBox";
+            this.preuServeisBox.ReadOnly = true;
+            this.preuServeisBox.Size = new System.Drawing.Size(125, 20);
+            this.preuServeisBox.TabIndex = 28;
             // 
             // AfegirReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 421);
+            this.Controls.Add(this.preuServeisBox);
+            this.Controls.Add(this.afegirServeiButton);
             this.Controls.Add(this.DataFinalInput);
             this.Controls.Add(this.DataIniciInput);
             this.Controls.Add(this.quantitatInput);
@@ -344,8 +371,10 @@
         public System.Windows.Forms.TextBox importTotalInput;
         public System.Windows.Forms.TextBox temporadaInput;
         public System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker DataIniciInput;
-        private System.Windows.Forms.DateTimePicker DataFinalInput;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
+        public System.Windows.Forms.Button afegirServeiButton;
+        public System.Windows.Forms.TextBox preuServeisBox;
+        public System.Windows.Forms.DateTimePicker DataIniciInput;
+        public System.Windows.Forms.DateTimePicker DataFinalInput;
     }
 }
