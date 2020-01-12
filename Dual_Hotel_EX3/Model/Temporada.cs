@@ -14,23 +14,26 @@ namespace Dual_Hotel_EX3.Model
     
     public partial class Temporada
     {
+        private string nomTemporada;
+        private int day1;
+        private int month1;
+        private int day2;
+        private int month2;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Temporada()
         {
             this.Reservas = new HashSet<Reserva>();
         }
 
-        // string nom, decimal multiplicador, int dataIniciDay, int dataIniciMonth, int dataFinalDay, int dataFinalMonth
-        public Temporada(string nom, decimal multiplicador, int dataIniciDay, int dataIniciMonth, int dataFinalDay, int dataFinalMonth)
+        public Temporada(string nomTemporada, decimal multiplicador, int day1, int month1, int day2, int month2)
         {
-            Nom = nom;
+            this.nomTemporada = nomTemporada;
             Multiplicador = multiplicador;
-            DataIniciDay = dataIniciDay;
-            DataIniciMonth = dataIniciMonth;
-            DataFinalDay = dataFinalDay;
-            DataFinalMonth = dataFinalMonth;
-
-            this.Reservas = new HashSet<Reserva>();
+            this.day1 = day1;
+            this.month1 = month1;
+            this.day2 = day2;
+            this.month2 = month2;
         }
 
         public int IDTemporada { get; set; }

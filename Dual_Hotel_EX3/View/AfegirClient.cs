@@ -41,5 +41,10 @@ namespace Dual_Hotel_EX3.View
             }
 
         }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

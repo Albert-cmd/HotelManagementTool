@@ -39,5 +39,20 @@ namespace Dual_Hotel_EX3.View
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void afegirClientB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

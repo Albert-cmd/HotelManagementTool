@@ -55,7 +55,13 @@
             this.DataFinalInput = new System.Windows.Forms.DateTimePicker();
             this.afegirServeiButton = new System.Windows.Forms.Button();
             this.preuServeisBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.EditarReserves = new System.Windows.Forms.Button();
+            this.FiltrarReserves = new System.Windows.Forms.Button();
+            this.EliminarReserves = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ServeisList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -307,11 +313,61 @@
             this.preuServeisBox.Size = new System.Drawing.Size(125, 20);
             this.preuServeisBox.TabIndex = 28;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(738, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(186, 20);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Reserves Registrades";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(609, 57);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(513, 324);
+            this.dataGridView1.TabIndex = 30;
+            // 
+            // EditarReserves
+            // 
+            this.EditarReserves.Location = new System.Drawing.Point(609, 387);
+            this.EditarReserves.Name = "EditarReserves";
+            this.EditarReserves.Size = new System.Drawing.Size(75, 23);
+            this.EditarReserves.TabIndex = 31;
+            this.EditarReserves.Text = "Editar";
+            this.EditarReserves.UseVisualStyleBackColor = true;
+            // 
+            // FiltrarReserves
+            // 
+            this.FiltrarReserves.Location = new System.Drawing.Point(771, 387);
+            this.FiltrarReserves.Name = "FiltrarReserves";
+            this.FiltrarReserves.Size = new System.Drawing.Size(75, 23);
+            this.FiltrarReserves.TabIndex = 32;
+            this.FiltrarReserves.Text = "Filtrar";
+            this.FiltrarReserves.UseVisualStyleBackColor = true;
+            // 
+            // EliminarReserves
+            // 
+            this.EliminarReserves.Location = new System.Drawing.Point(690, 387);
+            this.EliminarReserves.Name = "EliminarReserves";
+            this.EliminarReserves.Size = new System.Drawing.Size(75, 23);
+            this.EliminarReserves.TabIndex = 33;
+            this.EliminarReserves.Text = "Eliminar";
+            this.EliminarReserves.UseVisualStyleBackColor = true;
+            // 
             // AfegirReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 421);
+            this.ClientSize = new System.Drawing.Size(1157, 455);
+            this.Controls.Add(this.EliminarReserves);
+            this.Controls.Add(this.FiltrarReserves);
+            this.Controls.Add(this.EditarReserves);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.preuServeisBox);
             this.Controls.Add(this.afegirServeiButton);
             this.Controls.Add(this.DataFinalInput);
@@ -342,6 +398,7 @@
             this.Text = "AfegirReserva";
             this.Load += new System.EventHandler(this.AfegirReserva_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ServeisList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,5 +433,10 @@
         public System.Windows.Forms.TextBox preuServeisBox;
         public System.Windows.Forms.DateTimePicker DataIniciInput;
         public System.Windows.Forms.DateTimePicker DataFinalInput;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button EditarReserves;
+        private System.Windows.Forms.Button FiltrarReserves;
+        private System.Windows.Forms.Button EliminarReserves;
     }
 }

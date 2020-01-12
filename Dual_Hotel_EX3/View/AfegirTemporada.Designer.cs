@@ -39,6 +39,8 @@
             this.dataIniciLabel = new System.Windows.Forms.Label();
             this.dataFinalLabel = new System.Windows.Forms.Label();
             this.dateTimeFinal = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // nomErrorLabel
@@ -136,11 +138,20 @@
             this.dateTimeFinal.Size = new System.Drawing.Size(227, 20);
             this.dateTimeFinal.TabIndex = 32;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(336, 61);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(419, 189);
+            this.dataGridView1.TabIndex = 34;
+            // 
             // AfegirTemporada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(252, 269);
+            this.ClientSize = new System.Drawing.Size(814, 304);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dataFinalLabel);
             this.Controls.Add(this.dateTimeFinal);
             this.Controls.Add(this.dataIniciLabel);
@@ -154,6 +165,7 @@
             this.Controls.Add(this.afegirTemporadaLabel);
             this.Name = "AfegirTemporada";
             this.Text = "AfegirTemporada";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Label dataFinalLabel;
         public System.Windows.Forms.DateTimePicker dateTimeInici;
         public System.Windows.Forms.DateTimePicker dateTimeFinal;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

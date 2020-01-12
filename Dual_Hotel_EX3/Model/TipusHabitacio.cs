@@ -14,6 +14,8 @@ namespace Dual_Hotel_EX3.Model
     
     public partial class TipusHabitacio
     {
+        private decimal suplement;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipusHabitacio()
         {
@@ -21,15 +23,12 @@ namespace Dual_Hotel_EX3.Model
             this.Reserva_Has_Tipus_Habitacio = new HashSet<Reserva_Has_Tipus_Habitacio>();
         }
 
-        public TipusHabitacio(int capacitat, string descripcio, decimal? suplementPersona, string nom)
+        public TipusHabitacio(int capacitat, string descripcio, decimal suplement, string nom)
         {
             Capacitat = capacitat;
             Descripcio = descripcio;
-            SuplementPersona = suplementPersona;
+            this.suplement = suplement;
             Nom = nom;
-
-            this.Habitacios = new HashSet<Habitacio>();
-            this.Reserva_Has_Tipus_Habitacio = new HashSet<Reserva_Has_Tipus_Habitacio>();
         }
 
         public int IDTipus { get; set; }
